@@ -16,35 +16,41 @@ struct FirstScreen: View {
                 VStack(alignment: .leading) {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 1) {
+                        HStack(spacing: 8) {
                             ForEach(0 ..< 7) { item in
                                 CircleHorizontalMenu(image: Image("logo"))
                             }
                         }
+                        .padding([.horizontal, .vertical])
                     }
                     
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: -15) {
+                        HStack(spacing: 12) {
                             ForEach(0 ..< 7) { item in
                                 SaleView(image: Image("sale"))
                             }
                         }
+                        .padding(.horizontal)
                     }
                     
                     QrView()
-                        .padding(.vertical)
+//                        .padding(.vertical)
+                        .padding([.horizontal, .vertical])
                     
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: -15) {
+                        HStack(spacing: 12) {
                             ForEach(0 ..< 7) { item in
                                 PersonalView(image: Image("coffee"))
                             }
                         }
+                        .padding(.horizontal)
+                        
                     }
                     
                     Text("Рекомендуем")
                         .font(.system(size: 25, weight: .bold))
-                        .padding()
+                        .padding(.horizontal)
+                        .padding(.top)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
@@ -53,7 +59,7 @@ struct FirstScreen: View {
                                 
                             }
                         }
-                        .padding()
+                        .padding([.horizontal, .vertical])
                     }
                     
                     Text("Cладкое настроение")
@@ -67,7 +73,7 @@ struct FirstScreen: View {
                                 
                             }
                         }
-                        .padding()
+                        .padding([.horizontal, .vertical])
                     }
                     
                 }
@@ -79,6 +85,7 @@ struct FirstScreen: View {
 
                 ToolbarItem(placement: .navigationBarLeading) {
                     LocationMenu()
+                        
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -111,15 +118,16 @@ struct LocationMenu: View {
                 Image("location")
                     .resizable()
                     .frame(width: 20, height: 20)
+                    .padding(.leading, 10)
 
                 
                 Text("Москва, Москва и Московская область")
                     .font(.system(size: 15))
-                    .padding(.trailing, 25)
+                    .padding(.vertical, 8)
+                    .padding(.trailing, 10)
 
                     
             }
-            .padding(10)
             .overlay(RoundedRectangle(cornerRadius: 25)
                 .stroke(.gray, lineWidth: 1)
                 .opacity(0.6)
@@ -146,7 +154,6 @@ struct CircleHorizontalMenu: View {
             Text("Привилегии \n«Мой SPAR»")
                 .font(.system(size: 15, weight: .light))
         }
-        .padding()
     }
 }
 
@@ -161,9 +168,7 @@ struct SaleView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 190)
                 .cornerRadius(25)
-//                .padding()
         }
-        .padding(.horizontal)
     }
 }
 
@@ -200,7 +205,6 @@ struct QrView: View {
                 .cornerRadius(25)
                 .overlay(ImageOverlay(), alignment: .leading)
         }
-        .padding(.horizontal)
     }
 }
 
@@ -220,9 +224,7 @@ struct PersonalView: View {
                         .font(.system(size: 20, weight: .medium))
                         .padding()
                 }
-
         }
-        .padding(.horizontal)
     }
 }
 
